@@ -14,7 +14,7 @@ def submit():
         response += "2. My Phone Number"
     elif text == "1":
         response = "CON Choose account information you want to view\n"
-        response += "1. Account Number"
+        response += "1. Account Number\n"
         response += "2. Account Balance"
 
     elif text == "2":
