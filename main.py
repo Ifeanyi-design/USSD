@@ -8,7 +8,6 @@ app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL", "sqlite:/
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 class CODES(db.Model):
-    __tablename__ = "promo_code"
     id = db.Column(db.Integer, primary_key=True)
     code = db.Column(db.String(100), unique=True, nullable=False)
     status = db.Column(db.Boolean,default=False, nullable=False)
