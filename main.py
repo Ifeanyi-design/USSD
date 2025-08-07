@@ -28,25 +28,22 @@ def submit():
     if text == "":
         response = "CON Enter the Promo Code To Claim Reward"
     else:
-        splited_code = text.split("*")
-        if len(splited_code) == 2:
-            code = splited_code[1]
-            check_code = CODES.query.filter_by(code=code).first()
-            if check_code:
-                if check_code.status == False:
-                    check_code.status = True
-                    check_code.phone_number = phone_number
-                    timee = datetime.now(timezone.utc)
-                    check_code.time = timee.strftime("%Y-%m-%d %H:%M:%S %Z")
-                    reward = check_code.reward
-                    db.session.commit()
-                    response = f"END Congratulations!!! you won {reward}"
-                else:
-                    response = f"END Sorry the code {code} has already been used"
+
+        code = text
+        check_code = CODES.query.filter_by(code=code).first()
+        if check_code:
+            if check_code.status == False:
+                check_code.status = True
+                check_code.phone_number = phone_number
+                timee = datetime.now(timezone.utc)
+                check_code.time = timee.strftime("%Y-%m-%d %H:%M:%S %Z")
+                reward = check_code.reward
+                db.session.commit()
+                response = f"END Congratulations!!! you won {reward}"
             else:
-                response = "END Sorry Better luck next time!!"
+                response = f"END Sorry the code {code} has already been used"
         else:
-            response = "END This not a valid Code\nTry again later."
+                response = "END Sorry Better luck next time!!"
 
 
 
