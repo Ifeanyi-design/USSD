@@ -3,8 +3,8 @@
 
 ### Flask ###
 instance/*
-!instance/.gitignore
 !instance/promo_codes.db
+!instance/.gitignore
 .webassets-cache
 .env
 
