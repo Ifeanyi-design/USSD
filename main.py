@@ -2,7 +2,7 @@ from flask import Flask, request, Response
 
 app = Flask(__name__)
 
-app.route("/submit", methods=["POST"])
+@app.route("/submit", methods=["POST"])
 def submit():
     session_id = request.form["sessionId"]
     service_code = request.form["serviceCode"]
